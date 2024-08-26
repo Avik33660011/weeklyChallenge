@@ -225,4 +225,57 @@ public class BookInfo {
     }
 }
 
+public class Account {
+    private String accountHolderName;
+    private int accountNumber;
+    private double balance;
+
+    // Default constructor
+    public Account() {
+        this.accountHolderName = "";
+        this.accountNumber = 0;
+        this.balance = 0.0;
+    }
+
+    // Parameterized constructor
+    public Account(String accountHolderName, int accountNumber, double balance) {
+        this.accountHolderName = accountHolderName;
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+
+    // Method to deposit amount
+    public void deposit(int amt) {
+        if (amt > 0) {
+            balance += amt;
+            System.out.println("Deposited: $" + amt);
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    // Method to withdraw amount
+    public void withdraw(int amt) {
+        if (amt > 0) {
+            if (amt <= balance) {
+                balance -= amt;
+                System.out.println("Withdrew: $" + amt);
+            } else {
+                System.out.println("Insufficient balance.");
+            }
+        } else {
+            System.out.println("Invalid withdrawal amount.");
+        }
+    }
+
+    // Method to display account details
+    @Override
+    public String toString() {
+        return "Account Holder: " + accountHolderName + "\n" +
+               "Account Number: " + accountNumber + "\n" +
+               "Balance: $" + balance;
+    }
+}
+
+
 
