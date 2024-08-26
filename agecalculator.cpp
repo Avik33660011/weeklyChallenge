@@ -442,3 +442,33 @@ public class Stack {
     }
 }
 
+
+public class StackDemo {
+    public static void main(String[] args) {
+        Stack stack = new Stack(5); // Create a stack with capacity of 5
+
+        // Push elements onto the stack
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+
+        // Pop elements from the stack
+        System.out.println("Popped from stack: " + stack.pop());
+        System.out.println("Popped from stack: " + stack.pop());
+
+        // Try popping from an empty stack
+        System.out.println("Popped from stack: " + stack.pop());
+
+        // Push more elements
+        stack.push(40);
+        stack.push(50);
+        stack.push(60); // This should succeed
+
+        // Try pushing into a full stack
+        stack.push(70); // This should fail
+
+        // Display the size of the stack
+        System.out.println("Current stack size: " + stack.size());
+    }
+}
+
