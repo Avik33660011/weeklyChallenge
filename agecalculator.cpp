@@ -130,3 +130,31 @@ public class ArmstrongNumberChecker {
     }
 }
 
+import java.util.Scanner;
+
+public class FibonacciSeries {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user to enter the number of terms in the Fibonacci series
+        System.out.print("Enter the number of terms for the Fibonacci series: ");
+        int n = scanner.nextInt();
+
+        // Initialize the first two numbers in the Fibonacci series
+        int first = 1, second = 1;
+
+        System.out.print("Fibonacci series: " + first + " " + second);
+
+        // Generate the Fibonacci series up to n terms
+        for (int i = 3; i <= n; i++) {
+            int next = first + second;
+            System.out.print(" " + next);
+            first = second;
+            second = next;
+        }
+
+        scanner.close();
+    }
+}
+
+
