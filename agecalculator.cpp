@@ -472,3 +472,104 @@ public class StackDemo {
     }
 }
 
+
+public class Employee {
+    // Private member variables
+    private int employeeId;
+    private String employeeName;
+    private double basicSalary;
+    private double hra;
+    private double medical;
+    private double pf;
+    private double pt;
+    private double netSalary;
+    private double grossSalary;
+
+    // No-argument constructor
+    public Employee() {
+        this.employeeId = 0;
+        this.employeeName = "";
+        this.basicSalary = 0.0;
+        this.hra = 0.0;
+        this.medical = 0.0;
+        this.pf = 0.0;
+        this.pt = 200.0; // Fixed value for PT
+        this.netSalary = 0.0;
+        this.grossSalary = 0.0;
+    }
+
+    // Parameterized constructor
+    public Employee(int employeeId, String employeeName, double basicSalary) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.basicSalary = basicSalary;
+        this.pt = 200.0; // Fixed value for PT
+        calculateSalaries(); // Calculate salaries upon initialization
+    }
+
+    // Getters and setters for employeeld, employeeName, basicSalary, netSalary, and grossSalary
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public double getBasicSalary() {
+        return basicSalary;
+    }
+
+    public void setBasicSalary(double basicSalary) {
+        this.basicSalary = basicSalary;
+        calculateSalaries(); // Recalculate salaries when the basic salary changes
+    }
+
+    public double getNetSalary() {
+        return netSalary;
+    }
+
+    public double getGrossSalary() {
+        return grossSalary;
+    }
+
+    // Method to calculate gross salary and net salary
+    private void calculateSalaries() {
+        this.hra = 0.50 * basicSalary;
+        this.pf = 0.12 * basicSalary;
+        this.medical = 0.0; // Assuming a fixed medical allowance if needed
+        this.grossSalary = basicSalary + hra + medical;
+        this.netSalary = grossSalary - (pt + pf);
+    }
+
+    // Method to display employee details
+    public void displayDetails() {
+        System.out.println("Employee ID: " + employeeId);
+        System.out.println("Employee Name: " + employeeName);
+        System.out.println("Basic Salary: " + basicSalary);
+        System.out.println("HRA: " + hra);
+        System.out.println("Medical: " + medical);
+        System.out.println("PF: " + pf);
+        System.out.println("PT: " + pt);
+        System.out.println("Gross Salary: " + grossSalary);
+        System.out.println("Net Salary: " + netSalary);
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        Employee employee1 = new Employee(1, "John Doe", 50000);
+        employee1.displayDetails();
+
+        Employee employee2 = new Employee(2, "Jane Smith", 60000);
+        employee2.displayDetails();
+    }
+}
+
