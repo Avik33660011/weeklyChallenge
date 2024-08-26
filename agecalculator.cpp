@@ -394,4 +394,51 @@ public class ArrayOperations {
 
 
 
+public class Stack {
+    private int[] stackArray;
+    private int top;
+    private int capacity;
+
+    // Constructor to initialize the stack
+    public Stack(int size) {
+        capacity = size;
+        stackArray = new int[capacity];
+        top = -1; // Stack is initially empty
+    }
+
+    // Push method to add an element to the stack
+    public void push(int value) {
+        if (isFull()) {
+            System.out.println("Stack is full. Cannot push " + value);
+        } else {
+            stackArray[++top] = value;
+            System.out.println("Pushed " + value + " onto the stack");
+        }
+    }
+
+    // Pop method to remove and return the top element from the stack
+    public int pop() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty. Cannot pop.");
+            return -1; // Return an invalid value
+        } else {
+            return stackArray[top--];
+        }
+    }
+
+    // Method to check if the stack is empty
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    // Method to check if the stack is full
+    public boolean isFull() {
+        return top == capacity - 1;
+    }
+
+    // Method to get the size of the stack
+    public int size() {
+        return top + 1;
+    }
+}
 
