@@ -197,3 +197,32 @@ public class Book {
     }
 }
 
+
+import java.util.Scanner;
+
+public class BookInfo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Create a new Book object
+        Book myBook = new Book();
+
+        // Get user input for book title and price
+        System.out.print("Enter the book title: ");
+        String title = scanner.nextLine();
+
+        System.out.print("Enter the book price: ");
+        double price = scanner.nextDouble();
+
+        // Create book with the input data
+        myBook.createBook(title, price);
+
+        // Display book information
+        System.out.println("\nBook Information:");
+        myBook.showBook();
+
+        scanner.close();
+    }
+}
+
+
