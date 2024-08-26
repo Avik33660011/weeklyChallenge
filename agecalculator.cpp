@@ -278,4 +278,63 @@ public class Account {
 }
 
 
+import java.util.Scanner;
+
+public class AccountInfo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input for first account
+        System.out.println("Enter details for Account 1:");
+        System.out.print("Account Holder Name: ");
+        String name1 = scanner.nextLine();
+        System.out.print("Account Number: ");
+        int number1 = scanner.nextInt();
+        System.out.print("Initial Balance: ");
+        double balance1 = scanner.nextDouble();
+
+        // Create first account
+        Account account1 = new Account(name1, number1, balance1);
+
+        // Input for second account
+        scanner.nextLine(); // Consume the newline
+        System.out.println("\nEnter details for Account 2:");
+        System.out.print("Account Holder Name: ");
+        String name2 = scanner.nextLine();
+        System.out.print("Account Number: ");
+        int number2 = scanner.nextInt();
+        System.out.print("Initial Balance: ");
+        double balance2 = scanner.nextDouble();
+
+        // Create second account
+        Account account2 = new Account(name2, number2, balance2);
+
+        // Display account details
+        System.out.println("\nAccount 1 Details:");
+        System.out.println(account1);
+
+        System.out.println("\nAccount 2 Details:");
+        System.out.println(account2);
+
+        // Perform some transactions
+        System.out.print("\nEnter amount to deposit in Account 1: ");
+        int depositAmount1 = scanner.nextInt();
+        account1.deposit(depositAmount1);
+
+        System.out.print("Enter amount to withdraw from Account 2: ");
+        int withdrawAmount2 = scanner.nextInt();
+        account2.withdraw(withdrawAmount2);
+
+        // Display updated account details
+        System.out.println("\nUpdated Account 1 Details:");
+        System.out.println(account1);
+
+        System.out.println("\nUpdated Account 2 Details:");
+        System.out.println(account2);
+
+        scanner.close();
+    }
+}
+
+
 
