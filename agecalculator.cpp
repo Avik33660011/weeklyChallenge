@@ -158,3 +158,42 @@ public class FibonacciSeries {
 }
 
 
+
+public class Book {
+    // Private attributes for book title and price
+    private String Book_title;
+    private double Book_price;
+
+    // Getter method for Book_title
+    public String getBookTitle() {
+        return Book_title;
+    }
+
+    // Setter method for Book_title
+    public void setBookTitle(String bookTitle) {
+        this.Book_title = bookTitle;
+    }
+
+    // Getter method for Book_price
+    public double getBookPrice() {
+        return Book_price;
+    }
+
+    // Setter method for Book_price
+    public void setBookPrice(double bookPrice) {
+        this.Book_price = bookPrice;
+    }
+
+    // Method to create a book with title and price
+    public void createBook(String title, double price) {
+        setBookTitle(title);
+        setBookPrice(price);
+    }
+
+    // Method to display book information
+    public void showBook() {
+        System.out.println("Book Title: " + getBookTitle());
+        System.out.println("Book Price: $" + getBookPrice());
+    }
+}
+
