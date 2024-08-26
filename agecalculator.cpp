@@ -336,5 +336,62 @@ public class AccountInfo {
     }
 }
 
+import java.util.Scanner;
+
+public class ArrayOperations {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Define the size of the arrays
+        System.out.print("Enter the size of the arrays: ");
+        int size = scanner.nextInt();
+
+        // Declare and initialize the arrays
+        int[] array1 = new int[size];
+        int[] array2 = new int[size];
+        int[] sumArray = new int[size];
+        int[] differenceArray = new int[size];
+        int[] productArray = new int[size];
+        double[] quotientArray = new double[size];
+
+        // Input values for the first array
+        System.out.println("Enter values for the first array:");
+        for (int i = 0; i < size; i++) {
+            System.out.print("Value at index " + i + ": ");
+            array1[i] = scanner.nextInt();
+        }
+
+        // Input values for the second array
+        System.out.println("Enter values for the second array:");
+        for (int i = 0; i < size; i++) {
+            System.out.print("Value at index " + i + ": ");
+            array2[i] = scanner.nextInt();
+        }
+
+        // Perform arithmetic operations
+        for (int i = 0; i < size; i++) {
+            sumArray[i] = array1[i] + array2[i];
+            differenceArray[i] = array1[i] - array2[i];
+            productArray[i] = array1[i] * array2[i];
+            if (array2[i] != 0) {
+                quotientArray[i] = (double) array1[i] / array2[i];
+            } else {
+                quotientArray[i] = Double.NaN; // Handle division by zero
+            }
+        }
+
+        // Display the results
+        System.out.println("\nArithmetic Operations Results:");
+        System.out.println("Index\tArray1\tArray2\tSum\tDifference\tProduct\tQuotient");
+        for (int i = 0; i < size; i++) {
+            System.out.printf("%d\t%d\t%d\t%d\t%d\t\t%d\t%f%n", 
+                              i, array1[i], array2[i], sumArray[i], differenceArray[i], productArray[i], quotientArray[i]);
+        }
+
+        scanner.close();
+    }
+}
+
+
 
 
