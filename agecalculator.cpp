@@ -1026,4 +1026,29 @@ public class Employee {
     }
 }
 
+// Manager.java
+public class Manager extends Employee {
+    private int fixedSalary;
+    private int incentives;
+
+    public Manager(String name, int empId, int fixedSalary, int incentives) {
+        super(name, empId);
+        this.fixedSalary = fixedSalary;
+        this.incentives = incentives;
+    }
+
+    public int computeSalary() {
+        return fixedSalary + incentives;
+    }
+
+    @Override
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("Fixed Salary: " + fixedSalary);
+        System.out.println("Incentives: " + incentives);
+        System.out.println("Total Salary: " + computeSalary());
+    }
+}
+
+
 
