@@ -911,3 +911,58 @@ public class Main {
 }
 
 
+class SalesPerson extends WageEmployee {
+    // Additional attributes for SalesPerson
+    private int sales;
+    private int commission;
+
+    // Default constructor
+    public SalesPerson() {
+        super(); // Call to WageEmployee's default constructor
+        this.sales = 0;
+        this.commission = 0;
+    }
+
+    // Parameterized constructor
+    public SalesPerson(int id, String name, double salary, int hrs, int rate, int sales, int commission) {
+        super(id, name, salary, hrs, rate); // Call to WageEmployee's parameterized constructor
+        this.sales = sales;
+        this.commission = commission;
+    }
+
+    // Getter methods for additional attributes
+    public int getSales() {
+        return sales;
+    }
+
+    public int getCommission() {
+        return commission;
+    }
+
+    // Setter methods for additional attributes
+    public void setSales(int sales) {
+        this.sales = sales;
+    }
+
+    public void setCommission(int commission) {
+        this.commission = commission;
+    }
+
+    // Override computeSalary method
+    @Override
+    public void computeSalary() {
+        double baseSalary = getHrs() * getRate();
+        double commissionAmount = sales * commission / 100.0;
+        double totalSalary = baseSalary + commissionAmount;
+        setSalary(totalSalary); // Use setter from Employee class to set the total salary
+    }
+
+    // Override toString to display SalesPerson details
+    @Override
+    public String toString() {
+        return super.toString() + ", SalesPerson [Sales=" + sales + ", Commission=" + commission + "%]";
+    }
+}
+
+
+
