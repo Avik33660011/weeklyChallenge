@@ -677,3 +677,60 @@ public class SumOfDigitsInString {
         return sum;
     }
 }
+
+//
+
+class Employee {
+    // Attributes of an employee
+    private int id;
+    private String name;
+    private double salary;
+
+    // Constructor to initialize an employee object
+    public Employee(int id, String name, double salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    // Getter methods to access employee information
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    // Method to print employee details
+    public void printEmployeeInfo() {
+        System.out.println("Employee ID: " + id);
+        System.out.println("Employee Name: " + name);
+        System.out.println("Employee Salary: " + salary);
+        System.out.println("------------------------");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an array to store Employee objects
+        Employee[] employees = new Employee[3];
+
+        // Initialize employee objects and add them to the array
+        employees[0] = new Employee(1, "John Doe", 50000);
+        employees[1] = new Employee(2, "Jane Smith", 60000);
+        employees[2] = new Employee(3, "Emily Johnson", 70000);
+
+        // Print all employee information
+        System.out.println("Employee Information:");
+        System.out.println("------------------------");
+        for (Employee employee : employees) {
+            employee.printEmployeeInfo();
+        }
+    }
+}
+
