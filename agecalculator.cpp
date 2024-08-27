@@ -603,3 +603,24 @@ public class Main {
     }
 }
 
+// 
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a Scanner object to read input from the user
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user to enter a number
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+
+        // Convert and display the number in binary, octal, and hexadecimal formats
+        System.out.println("Binary: " + Integer.toBinaryString(number));
+        System.out.println("Octal: " + Integer.toOctalString(number));
+        System.out.println("Hexadecimal: " + Integer.toHexString(number));
+
+        // Close the scanner
+        scanner.close();
+    }
+}
