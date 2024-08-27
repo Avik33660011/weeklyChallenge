@@ -878,3 +878,36 @@ class WageEmployee extends Employee {
 }
 
 
+//
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Accept input from the user
+        System.out.println("Enter Employee ID: ");
+        int id = scanner.nextInt();
+
+        System.out.println("Enter Employee Name: ");
+        String name = scanner.next();
+
+        System.out.println("Enter Hours Worked: ");
+        int hrs = scanner.nextInt();
+
+        System.out.println("Enter Rate per Hour: ");
+        int rate = scanner.nextInt();
+
+        // Create a WageEmployee object using parameterized constructor
+        WageEmployee wageEmployee = new WageEmployee(id, name, 0.0, hrs, rate);
+
+        // Compute the salary
+        wageEmployee.computeSalary();
+
+        // Print the WageEmployee details including the computed salary
+        System.out.println("Employee Details: " + wageEmployee.toString());
+
+        scanner.close();
+    }
+}
+
+
