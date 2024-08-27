@@ -653,3 +653,27 @@ public class Main {
         System.out.printf("%-10s %-22s %-22s %-10d%n", "Double", Double.MIN_VALUE, Double.MAX_VALUE, Double.SIZE);
     }
 }
+
+//
+
+public class SumOfDigitsInString {
+    public static void main(String[] args) {
+        String s = "14abc9kj";
+        int sum = sumOfDigits(s);
+        System.out.println("The sum of digits in the string \"" + s + "\" is: " + sum);
+    }
+
+    public static int sumOfDigits(String s) {
+        int sum = 0;
+        // Iterate over each character in the string
+        for (int i = 0; i < s.length(); i++) {
+            char currentChar = s.charAt(i);
+            // Check if the character is a digit
+            if (Character.isDigit(currentChar)) {
+                // Convert the character to its integer value and add it to the sum
+                sum += Character.getNumericValue(currentChar);
+            }
+        }
+        return sum;
+    }
+}
