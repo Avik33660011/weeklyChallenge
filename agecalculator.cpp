@@ -734,3 +734,39 @@ public class Main {
     }
 }
 
+
+//
+
+// Base class
+class Game {
+    // Default constructor for Game class
+    public Game() {
+        System.out.println("Game constructor called");
+    }
+}
+
+// Subclass of Game
+class BoardGame extends Game {
+    // Default constructor for BoardGame class
+    public BoardGame() {
+        System.out.println("BoardGame constructor called");
+    }
+}
+
+// Subclass of BoardGame
+class Chess extends BoardGame {
+    // Default constructor for Chess class
+    public Chess() {
+        System.out.println("Chess constructor called");
+    }
+}
+
+// Class to demonstrate the behavior
+public class GameDemo {
+    public static void main(String[] args) {
+        // Creating an object of Chess class
+        Chess ch = new Chess();
+    }
+}
+
+
