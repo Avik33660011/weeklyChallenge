@@ -1002,5 +1002,28 @@ public class Main {
     }
 }
 
+// Employee.java
+public class Employee {
+    private String name;
+    private int empId;
+
+    public Employee(String name, int empId) {
+        this.name = name;
+        this.empId = empId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getEmpId() {
+        return empId;
+    }
+
+    public void displayDetails() {
+        System.out.println("Employee Name: " + name);
+        System.out.println("Employee ID: " + empId);
+    }
+}
 
 
