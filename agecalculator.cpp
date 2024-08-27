@@ -1050,5 +1050,27 @@ public class Manager extends Employee {
     }
 }
 
+//
+
+// TestEmployee.java
+public class TestEmployee {
+    public static void main(String[] args) {
+        // Creating an array of Employee objects
+        Employee[] employees = new Employee[3];
+        
+        // Adding different types of employees to the array
+        employees[0] = new Employee("Alice Smith", 101);
+        employees[1] = new Manager("John Doe", 102, 50000, 10000);
+        employees[2] = new Employee("Bob Johnson", 103);
+
+        // Loop through the array and print details of each employee
+        for (Employee emp : employees) {
+            emp.displayDetails();
+            System.out.println(); // Adding a line break between employee details
+        }
+    }
+}
+
+
 
 
