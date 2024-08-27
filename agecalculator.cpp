@@ -624,3 +624,32 @@ public class Main {
         scanner.close();
     }
 }
+
+
+//
+
+public class Main {
+    public static void main(String[] args) {
+        // Print table header
+        System.out.printf("%-10s %-22s %-22s %-10s%n", "Type", "Min Value", "Max Value", "Size (bits)");
+        System.out.println("---------------------------------------------------------------");
+
+        // Byte data type
+        System.out.printf("%-10s %-22s %-22s %-10d%n", "Byte", Byte.MIN_VALUE, Byte.MAX_VALUE, Byte.SIZE);
+
+        // Short data type
+        System.out.printf("%-10s %-22s %-22s %-10d%n", "Short", Short.MIN_VALUE, Short.MAX_VALUE, Short.SIZE);
+
+        // Integer data type
+        System.out.printf("%-10s %-22s %-22s %-10d%n", "Integer", Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.SIZE);
+
+        // Long data type
+        System.out.printf("%-10s %-22s %-22s %-10d%n", "Long", Long.MIN_VALUE, Long.MAX_VALUE, Long.SIZE);
+
+        // Float data type
+        System.out.printf("%-10s %-22s %-22s %-10d%n", "Float", Float.MIN_VALUE, Float.MAX_VALUE, Float.SIZE);
+
+        // Double data type
+        System.out.printf("%-10s %-22s %-22s %-10d%n", "Double", Double.MIN_VALUE, Double.MAX_VALUE, Double.SIZE);
+    }
+}
