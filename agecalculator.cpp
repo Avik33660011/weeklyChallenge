@@ -770,3 +770,60 @@ public class GameDemo {
 }
 
 
+//employee class
+import java.util.Scanner;
+
+class Employee {
+    // Attributes
+    private int id;
+    private String name;
+    private double salary;
+
+    // Default constructor
+    public Employee() {
+        this.id = 0;
+        this.name = "";
+        this.salary = 0.0;
+    }
+
+    // Parameterized constructor
+    public Employee(int id, String name, double salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    // Getter methods
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    // Setter methods
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    // toString method to display employee details
+    @Override
+    public String toString() {
+        return "Employee [ID=" + id + ", Name=" + name + ", Salary=" + salary + "]";
+    }
+}
+
+
