@@ -826,4 +826,55 @@ class Employee {
     }
 }
 
+//
+class WageEmployee extends Employee {
+    // Additional attributes for WageEmployee
+    private int hrs;
+    private int rate;
+
+    // Default constructor
+    public WageEmployee() {
+        super();  // Call to Employee's default constructor
+        this.hrs = 0;
+        this.rate = 0;
+    }
+
+    // Parameterized constructor
+    public WageEmployee(int id, String name, double salary, int hrs, int rate) {
+        super(id, name, salary);  // Call to Employee's parameterized constructor
+        this.hrs = hrs;
+        this.rate = rate;
+    }
+
+    // Getter methods for additional attributes
+    public int getHrs() {
+        return hrs;
+    }
+
+    public int getRate() {
+        return rate;
+    }
+
+    // Setter methods for additional attributes
+    public void setHrs(int hrs) {
+        this.hrs = hrs;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
+    // Method to compute salary
+    public void computeSalary() {
+        double computedSalary = hrs * rate;
+        setSalary(computedSalary);  // Use setter from Employee class to set salary
+    }
+
+    // Override toString to display WageEmployee details
+    @Override
+    public String toString() {
+        return super.toString() + ", WageEmployee [Hours=" + hrs + ", Rate=" + rate + "]";
+    }
+}
+
 
