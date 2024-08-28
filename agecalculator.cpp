@@ -1338,3 +1338,79 @@ public class TestShape {
     }
 }
 
+//
+// Interface Relational
+interface Relational {
+    // Abstract methods for relational operations
+    void greaterThan();
+    void lessThan();
+    void greaterThaneq();
+    void lessThaneq();
+}
+
+// Implementing class ImplRel
+class ImplRel implements Relational {
+    int a, b;
+
+    // Constructor to initialize a and b
+    ImplRel(int a, int b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    // Implementation of greaterThan method
+    @Override
+    public void greaterThan() {
+        if (a > b) {
+            System.out.println(a + " is greater than " + b);
+        } else {
+            System.out.println(a + " is not greater than " + b);
+        }
+    }
+
+    // Implementation of lessThan method
+    @Override
+    public void lessThan() {
+        if (a < b) {
+            System.out.println(a + " is less than " + b);
+        } else {
+            System.out.println(a + " is not less than " + b);
+        }
+    }
+
+    // Implementation of greaterThaneq method
+    @Override
+    public void greaterThaneq() {
+        if (a >= b) {
+            System.out.println(a + " is greater than or equal to " + b);
+        } else {
+            System.out.println(a + " is not greater than or equal to " + b);
+        }
+    }
+
+    // Implementation of lessThaneq method
+    @Override
+    public void lessThaneq() {
+        if (a <= b) {
+            System.out.println(a + " is less than or equal to " + b);
+        } else {
+            System.out.println(a + " is not less than or equal to " + b);
+        }
+    }
+}
+
+// Class RelationDemo with the main method
+public class RelationDemo {
+    public static void main(String[] args) {
+        // Creating an object of ImplRel class
+        ImplRel relObj = new ImplRel(10, 20);
+
+        // Invoking all the methods
+        relObj.greaterThan();
+        relObj.lessThan();
+        relObj.greaterThaneq();
+        relObj.lessThaneq();
+    }
+}
+
+
