@@ -1141,3 +1141,102 @@ public class Main {
 }
 
 
+//
+import java.util.Random;
+
+// Base class Medicine
+class Medicine {
+    String name;
+    String address;
+
+    // Constructor to initialize name and address
+    Medicine(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
+
+    // Method to display label information
+    void displayLabel() {
+        System.out.println("Name: " + name);
+        System.out.println("Address: " + address);
+    }
+}
+
+// Subclass Tablet extending Medicine
+class Tablet extends Medicine {
+    // Constructor for Tablet
+    Tablet(String name, String address) {
+        super(name, address);
+    }
+
+    // Overriding displayLabel method for Tablet
+    @Override
+    void displayLabel() {
+        super.displayLabel();
+        System.out.println("Store in a cool dry place");
+    }
+}
+
+// Subclass Syrup extending Medicine
+class Syrup extends Medicine {
+    // Constructor for Syrup
+    Syrup(String name, String address) {
+        super(name, address);
+    }
+
+    // Overriding displayLabel method for Syrup
+    @Override
+    void displayLabel() {
+        super.displayLabel();
+        System.out.println("Shake well before use");
+    }
+}
+
+// Subclass Ointment extending Medicine
+class Ointment extends Medicine {
+    // Constructor for Ointment
+    Ointment(String name, String address) {
+        super(name, address);
+    }
+
+    // Overriding displayLabel method for Ointment
+    @Override
+    void displayLabel() {
+        super.displayLabel();
+        System.out.println("For external use only");
+    }
+}
+
+// Main class to test the Medicine subclasses
+public class TestMedicine {
+    public static void main(String[] args) {
+        // Array to hold references to Medicine objects
+        Medicine[] medicines = new Medicine[10];
+        Random random = new Random();
+
+        // Initialize the array with random Medicine objects
+        for (int i = 0; i < medicines.length; i++) {
+            int randInt = random.nextInt(3) + 1; // Random integer between 1 and 3
+
+            // Randomly create Medicine objects
+            switch (randInt) {
+                case 1:
+                    medicines[i] = new Tablet("PharmaCorp", "1234 Health St");
+                    break;
+                case 2:
+                    medicines[i] = new Syrup("PharmaCorp", "1234 Health St");
+                    break;
+                case 3:
+                    medicines[i] = new Ointment("PharmaCorp", "1234 Health St");
+                    break;
+            }
+        }
+
+        // Display labels for all medicines to check polymorphic behavior
+        for (Medicine medicine : medicines) {
+            medicine.displayLabel();
+            System.out.println();
+        }
+    }
+}
+
