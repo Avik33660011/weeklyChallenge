@@ -1505,6 +1505,36 @@ public class Student {
     }
 }
 
+package pack2;
+
+public class Batch {
+    private String batchName;
+    private int numberOfStudents;
+
+    // Constructor
+    public Batch(String batchName, int numberOfStudents) {
+        this.batchName = batchName;
+        this.numberOfStudents = numberOfStudents;
+    }
+
+    // Getter for batch name
+    public String getBatchName() {
+        return batchName;
+    }
+
+    // Getter for number of students
+    public int getNumberOfStudents() {
+        return numberOfStudents;
+    }
+
+    // Method to print batch details
+    public void printBatchDetails() {
+        System.out.println("Batch Name: " + batchName);
+        System.out.println("Number of Students: " + numberOfStudents);
+    }
+}
+
+
 
 
 
