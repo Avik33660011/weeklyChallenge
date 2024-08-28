@@ -1413,4 +1413,67 @@ public class RelationDemo {
     }
 }
 
+//
+import java.util.Scanner;
+
+// Interface MyMath
+interface MyMath {
+    // Abstract methods for mathematical operations
+    double sqr(double a);
+    double cube(double a);
+    double cosine(double a);
+    double sine(double a);
+}
+
+// Implementing class ImplMath
+class ImplMath implements MyMath {
+    // Implementation of the sqr method
+    @Override
+    public double sqr(double a) {
+        return a * a;
+    }
+
+    // Implementation of the cube method
+    @Override
+    public double cube(double a) {
+        return a * a * a;
+    }
+
+    // Implementation of the cosine method
+    @Override
+    public double cosine(double a) {
+        return Math.cos(a);
+    }
+
+    // Implementation of the sine method
+    @Override
+    public double sine(double a) {
+        return Math.sin(a);
+    }
+}
+
+// Class MathDemo with the main method
+public class MathDemo {
+    public static void main(String[] args) {
+        // Create a reference of MyMath pointing to an ImplMath object
+        MyMath math = new ImplMath();
+
+        // Create a Scanner object to accept input from the user
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        double number = scanner.nextDouble();
+
+        // Invoke the methods and display results
+        System.out.println("Square of " + number + " is: " + math.sqr(number));
+        System.out.println("Cube of " + number + " is: " + math.cube(number));
+        System.out.println("Cosine of " + number + " is: " + math.cosine(number));
+        System.out.println("Sine of " + number + " is: " + math.sine(number));
+
+        // Close the scanner
+        scanner.close();
+    }
+}
+
+
 
