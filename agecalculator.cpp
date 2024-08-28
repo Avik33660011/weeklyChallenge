@@ -1240,3 +1240,101 @@ public class TestMedicine {
     }
 }
 
+//
+
+// Abstract class Shape
+abstract class Shape {
+    // Abstract method to calculate area
+    abstract void area();
+}
+
+// Subclass Circle extending Shape
+class Circle extends Shape {
+    double radius;
+
+    // Constructor for Circle
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    // Overriding the area method for Circle
+    @Override
+    void area() {
+        double area = Math.PI * radius * radius;
+        System.out.println("Area of Circle: " + area);
+    }
+}
+
+// Subclass Cylinder extending Circle
+class Cylinder extends Circle {
+    double height;
+
+    // Constructor for Cylinder
+    Cylinder(double radius, double height) {
+        super(radius);
+        this.height = height;
+    }
+
+    // Overriding the area method for Cylinder (Surface Area)
+    @Override
+    void area() {
+        double area = 2 * Math.PI * radius * (radius + height);
+        System.out.println("Surface Area of Cylinder: " + area);
+    }
+}
+
+// Subclass Square extending Shape
+class Square extends Shape {
+    double side;
+
+    // Constructor for Square
+    Square(double side) {
+        this.side = side;
+    }
+
+    // Overriding the area method for Square
+    @Override
+    void area() {
+        double area = side * side;
+        System.out.println("Area of Square: " + area);
+    }
+}
+
+// Subclass Rectangle extending Square
+class Rectangle extends Square {
+    double width;
+
+    // Constructor for Rectangle
+    Rectangle(double length, double width) {
+        super(length);
+        this.width = width;
+    }
+
+    // Overriding the area method for Rectangle
+    @Override
+    void area() {
+        double area = side * width;
+        System.out.println("Area of Rectangle: " + area);
+    }
+}
+
+// TestShape class to test the polymorphic behavior of area calculation
+public class TestShape {
+    public static void main(String[] args) {
+        // Array of Shape references
+        Shape[] shapes = new Shape[4];
+
+        // Initialize the array with different types of shapes
+        shapes[0] = new Circle(5);
+        shapes[1] = new Cylinder(5, 10);
+        shapes[2] = new Square(4);
+        shapes[3] = new Rectangle(4, 5);
+
+        // Loop through the array and call the area method for each shape
+        for (Shape shape : shapes) {
+            shape.area();
+            System.out.println();
+        }
+    }
+}
+
