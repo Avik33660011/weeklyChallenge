@@ -1475,5 +1475,36 @@ public class MathDemo {
     }
 }
 
+//
+package pack1;
+
+public class Student {
+    private String name;
+    private int rollNumber;
+
+    // Constructor
+    public Student(String name, int rollNumber) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+    }
+
+    // Getter for name
+    public String getName() {
+        return name;
+    }
+
+    // Getter for roll number
+    public int getRollNumber() {
+        return rollNumber;
+    }
+
+    // Method to print student details
+    public void printStudentDetails() {
+        System.out.println("Student Name: " + name);
+        System.out.println("Roll Number: " + rollNumber);
+    }
+}
+
+
 
 
