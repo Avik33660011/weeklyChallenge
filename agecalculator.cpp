@@ -1534,6 +1534,30 @@ public class Batch {
     }
 }
 
+//
+import pack1.Student;
+import pack2.Batch;
+
+public class PrintData {
+    public static void main(String[] args) {
+        // Create a Student object
+        Student student = new Student("John Doe", 101);
+
+        // Create a Batch object
+        Batch batch = new Batch("Batch A", 30);
+
+        // Print Student details
+        System.out.println("Student Details:");
+        student.printStudentDetails();
+        
+        System.out.println(); // For better readability
+
+        // Print Batch details
+        System.out.println("Batch Details:");
+        batch.printBatchDetails();
+    }
+}
+
 
 
 
