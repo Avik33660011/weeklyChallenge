@@ -1072,5 +1072,72 @@ public class TestEmployee {
 }
 
 
+// Abstract class Instrument
+abstract class Instrument {
+    // Abstract method play
+    abstract void play();
+}
+
+// Subclass Piano extending Instrument
+class Piano extends Instrument {
+    // Overriding the play method for Piano
+    @Override
+    void play() {
+        System.out.println("Piano is playing tan tan tan tan");
+    }
+}
+
+// Subclass Flute extending Instrument
+class Flute extends Instrument {
+    // Overriding the play method for Flute
+    @Override
+    void play() {
+        System.out.println("Flute is playing toot toot toot toot");
+    }
+}
+
+// Subclass Guitar extending Instrument
+class Guitar extends Instrument {
+    // Overriding the play method for Guitar
+    @Override
+    void play() {
+        System.out.println("Guitar is playing tin tin tin");
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // Array of Instrument type references
+        Instrument[] instruments = new Instrument[10];
+
+        // Assigning different types of instruments to the array
+        instruments[0] = new Piano();
+        instruments[1] = new Flute();
+        instruments[2] = new Guitar();
+        instruments[3] = new Piano();
+        instruments[4] = new Flute();
+        instruments[5] = new Guitar();
+        instruments[6] = new Piano();
+        instruments[7] = new Flute();
+        instruments[8] = new Guitar();
+        instruments[9] = new Piano();
+
+        // Looping through the array to check polymorphic behavior
+        for (int i = 0; i < instruments.length; i++) {
+            // Playing the instrument
+            instruments[i].play();
+
+            // Checking the type of each instrument using instanceof
+            if (instruments[i] instanceof Piano) {
+                System.out.println("Instrument at index " + i + " is a Piano");
+            } else if (instruments[i] instanceof Flute) {
+                System.out.println("Instrument at index " + i + " is a Flute");
+            } else if (instruments[i] instanceof Guitar) {
+                System.out.println("Instrument at index " + i + " is a Guitar");
+            }
+        }
+    }
+}
 
 
