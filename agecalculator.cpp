@@ -62,3 +62,32 @@ int main()
     return 0;
 }
 
+//
+import java.io.File;
+import java.text.SimpleDateFormat;
+
+public class FileSpecifications {
+    public static void main(String[] args) {
+        // Replace the file path with your desired file or directory path
+        String filePath = "path/to/your/file.txt";
+        
+        File file = new File(filePath);
+        
+        if (file.exists()) {
+            System.out.println("File Name: " + file.getName());
+            System.out.println("Is File: " + file.isFile());
+            System.out.println("Is Directory: " + file.isDirectory());
+            System.out.println("Last Modified: " + getFormattedDate(file.lastModified()));
+            System.out.println("File Size: " + file.length() + " bytes");
+            System.out.println("File Path: " + file.getAbsolutePath());
+        } else {
+            System.out.println("The file or directory does not exist.");
+        }
+    }
+    
+    private static String getFormattedDate(long millis) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        return sdf.format(millis);
+    }
+}
+
