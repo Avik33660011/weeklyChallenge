@@ -346,5 +346,55 @@ public class StudentSerializationDemo {
     }
 }
 
+import java.io.*;
+
+// Student class implements Serializable to allow serialization
+class Student implements Serializable {
+    private static final long serialVersionUID = 1L; // Unique identifier for serialization
+
+    private int id;
+    private String name;
+    private int age;
+
+    // Constructor
+    public Student(int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    // Override toString method for easy display
+    @Override
+    public String toString() {
+        return "Student{id=" + id + ", name='" + name + "', age=" + age + "}";
+    }
+}
+
+public class StudentSerializationDemo {
+    public static void main(String[] args) {
+        // Create a Student object
+        Student student = new Student(1, "John Doe", 20);
+
+        // Serialize the Student object
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("student.ser"))) {
+            oos.writeObject(student);
+            System.out.println("Serialization complete: " + student);
+        } catch (IOException e) {
+            System.out.println("IOException occurred during serialization: " + e.getMessage());
+        }
+
+        // Deserialize the Student object
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("student.ser"))) {
+            Student deserializedStudent = (Student) ois.readObject();
+            System.out.println("Deserialization complete: " + deserializedStudent);
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Exception occurred during deserialization: " + e.getMessage());
+        }
+    }
+}
+
+
+
+
 
 
