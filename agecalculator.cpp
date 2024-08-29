@@ -226,3 +226,43 @@ public class BufferedReadWriteExample {
     }
 }
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class StringSearchInFile {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user to enter the file name and the search string
+        System.out.print("Enter a file name: ");
+        String fileName = scanner.nextLine();
+
+        System.out.print("Enter a word to search: ");
+        String searchString = scanner.nextLine();
+
+        int occurrenceCount = 0; // Initialize the count of occurrences
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Split the line into words
+                String[] words = line.split("\\s+");
+
+                // Count the occurrences of the search string in this line
+                for (String word : words) {
+                    if (word.equals(searchString)) {
+                        occurrenceCount++;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file: " + e.getMessage());
+            return;
+        }
+
+        System.out.println("The word \"" + searchString + "\" occurs " + occurrenceCount + " times in the file.");
+    }
+}
+
