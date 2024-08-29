@@ -199,3 +199,30 @@ public class FileCopy {
     }
 }
 
+import java.io.*;
+
+public class BufferedReadWriteExample {
+    public static void main(String[] args) {
+        String inputFilePath = "input.txt";
+        String outputFilePath = "output.txt";
+
+        // Reading from the file using BufferedReader
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(inputFilePath))) {
+            // Writing to the file using BufferedWriter
+            try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(outputFilePath))) {
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    System.out.println("Reading Line: " + line);
+                    bufferedWriter.write(line);
+                    bufferedWriter.newLine();  // Add a new line in the output file
+                }
+                System.out.println("Data has been written to " + outputFilePath);
+            } catch (IOException e) {
+                System.out.println("An error occurred while writing to the file: " + e.getMessage());
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file: " + e.getMessage());
+        }
+    }
+}
+
