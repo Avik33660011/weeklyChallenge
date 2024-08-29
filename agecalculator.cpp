@@ -138,3 +138,38 @@ public class FileReadWrite {
     }
 }
 
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class FileCopy {
+    public static void main(String[] args) {
+        // Source file path to read from
+        String sourceFilePath = "source.txt";
+
+        // Destination file path to write to
+        String destinationFilePath = "destination.txt";
+
+        // Call the copyFile method to perform the copy operation
+        copyFile(sourceFilePath, destinationFilePath);
+    }
+
+    // Method to copy content from source file to destination file
+    private static void copyFile(String sourceFilePath, String destinationFilePath) {
+        try (FileInputStream fis = new FileInputStream(sourceFilePath);
+             FileOutputStream fos = new FileOutputStream(destinationFilePath)) {
+
+            int byteRead;
+            // Read each byte from the source file and write it to the destination file
+            while ((byteRead = fis.read()) != -1) {
+                fos.write(byteRead);
+            }
+            System.out.println("File copied successfully from " + sourceFilePath + " to " + destinationFilePath);
+
+        } catch (IOException e) {
+            System.err.println("Error during file operations: " + e.getMessage());
+        }
+    }
+}
+
