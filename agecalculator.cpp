@@ -266,3 +266,28 @@ public class StringSearchInFile {
     }
 }
 
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class ReadConsoleData {
+    public static void main(String[] args) {
+        // Create a BufferedReader object to read input from the console
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Enter some text: ");
+
+        try {
+            // Read a line of text from the console
+            String input = reader.readLine();
+            
+            // Print the input to the console
+            System.out.println("You entered: " + input);
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading input: " + e.getMessage());
+        }
+    }
+}
+
+
