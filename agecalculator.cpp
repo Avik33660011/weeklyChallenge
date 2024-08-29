@@ -91,3 +91,50 @@ public class FileSpecifications {
     }
 }
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class FileReadWrite {
+    public static void main(String[] args) {
+        // File path for reading and writing
+        String filePath = "myFile.txt";
+
+        // Example content to write to the file
+        String contentToWrite = "Hello, this is a sample text written to the file.";
+
+        // Writing content to the file
+        writeFile(filePath, contentToWrite);
+
+        // Reading content from the file
+        readFile(filePath);
+    }
+
+    // Method to write content to a file using FileOutputStream
+    private static void writeFile(String filePath, String content) {
+        try (FileOutputStream fos = new FileOutputStream(filePath)) {
+            // Convert the string content to bytes and write it to the file
+            fos.write(content.getBytes());
+            System.out.println("Content written to file: " + filePath);
+        } catch (IOException e) {
+            System.err.println("Error writing to file: " + e.getMessage());
+        }
+    }
+
+    // Method to read content from a file using FileInputStream
+    private static void readFile(String filePath) {
+        try (FileInputStream fis = new FileInputStream(filePath)) {
+            int byteRead;
+            System.out.println("Content read from file: ");
+            
+            // Read the file byte by byte until the end of the file (-1)
+            while ((byteRead = fis.read()) != -1) {
+                // Convert the byte to a char and print it
+                System.out.print((char) byteRead);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading from file: " + e.getMessage());
+        }
+    }
+}
+
