@@ -290,4 +290,35 @@ public class ReadConsoleData {
     }
 }
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class WordCountInFile {
+    public static void main(String[] args) {
+        // File name provided here
+        String fileName = "example.txt"; // Replace with your file path
+
+        int wordCount = 0;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            
+            // Read the file line by line
+            while ((line = reader.readLine()) != null) {
+                // Split the line into words using whitespace as delimiter
+                String[] words = line.split("\\s+");
+
+                // Increment the word count by the number of words in the current line
+                wordCount += words.length;
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file: " + e.getMessage());
+        }
+
+        // Output the word count
+        System.out.println("The file contains " + wordCount + " words.");
+    }
+}
+
 
