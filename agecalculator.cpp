@@ -393,6 +393,38 @@ public class StudentSerializationDemo {
     }
 }
 
+//
+import java.io.*;
+
+public class RandomAccessFileExample {
+    public static void main(String[] args) {
+        // File to work with
+        String fileName = "myFile.txt";
+
+        // Write data to the file using RandomAccessFile
+        try (RandomAccessFile raf = new RandomAccessFile(fileName, "rw")) {
+            // Write some text to the file
+            raf.writeUTF("Hello, this is a test for RandomAccessFile in Java.");
+
+            // Print out a message indicating success
+            System.out.println("Data written to file successfully.");
+        } catch (IOException e) {
+            System.out.println("IOException occurred while writing to the file: " + e.getMessage());
+        }
+
+        // Read data from the file using RandomAccessFile
+        try (RandomAccessFile raf = new RandomAccessFile(fileName, "r")) {
+            // Move the file pointer to the beginning of the file
+            raf.seek(0);
+
+            // Read and print out the text from the file
+            String content = raf.readUTF();
+            System.out.println("Data read from file: " + content);
+        } catch (IOException e) {
+            System.out.println("IOException occurred while reading from the file: " + e.getMessage());
+        }
+    }
+}
 
 
 
