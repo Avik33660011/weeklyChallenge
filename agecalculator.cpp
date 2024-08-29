@@ -321,4 +321,30 @@ public class WordCountInFile {
     }
 }
 
+import java.io.*;
+
+public class StudentSerializationDemo {
+    public static void main(String[] args) {
+        // Create a Student object
+        Student student = new Student(1, "John Doe", 20);
+
+        // Serialize the Student object
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("student.ser"))) {
+            oos.writeObject(student);
+            System.out.println("Serialization complete: " + student);
+        } catch (IOException e) {
+            System.out.println("IOException occurred during serialization: " + e.getMessage());
+        }
+
+        // Deserialize the Student object
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("student.ser"))) {
+            Student deserializedStudent = (Student) ois.readObject();
+            System.out.println("Deserialization complete: " + deserializedStudent);
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Exception occurred during deserialization: " + e.getMessage());
+        }
+    }
+}
+
+
 
