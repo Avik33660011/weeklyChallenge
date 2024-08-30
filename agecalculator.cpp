@@ -677,6 +677,100 @@ public class Voter {
 }
 
 
+import java.util.Scanner;
+
+// Number class
+public class Number {
+    private int firstNumber;
+    private int secondNumber;
+    private double result;
+
+    // Constructor to initialize values
+    public Number(int firstNumber, int secondNumber) {
+        this.firstNumber = firstNumber;
+        this.secondNumber = secondNumber;
+    }
+
+    // Method to add firstNumber and secondNumber
+    public void add() {
+        result = firstNumber + secondNumber;
+        System.out.println("Sum: " + result);
+    }
+
+    // Method to subtract secondNumber from firstNumber
+    public void sub() {
+        result = firstNumber - secondNumber;
+        System.out.println("Difference: " + result);
+    }
+
+    // Method to multiply firstNumber and secondNumber
+    public void mul() {
+        result = firstNumber * secondNumber;
+        System.out.println("Product: " + result);
+    }
+
+    // Method to divide firstNumber by secondNumber
+    public void div() throws ArithmeticException {
+        if (secondNumber == 0) {
+            throw new ArithmeticException("Division by zero is undefined.");
+        } else {
+            result = (double) firstNumber / secondNumber;
+            System.out.println("Quotient: " + result);
+        }
+    }
+
+    // Main method to display a menu and perform operations
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        int a = scanner.nextInt();
+
+        System.out.print("Enter the second number: ");
+        int b = scanner.nextInt();
+
+        // Create a Number object
+        Number number = new Number(a, b);
+
+        while (true) {
+            System.out.println("\nChoose an operation:");
+            System.out.println("1. Add");
+            System.out.println("2. Subtract");
+            System.out.println("3. Multiply");
+            System.out.println("4. Divide");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            try {
+                switch (choice) {
+                    case 1:
+                        number.add();
+                        break;
+                    case 2:
+                        number.sub();
+                        break;
+                    case 3:
+                        number.mul();
+                        break;
+                    case 4:
+                        number.div();
+                        break;
+                    case 5:
+                        System.out.println("Exiting...");
+                        scanner.close();
+                        return;
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                }
+            } catch (ArithmeticException e) {
+                System.out.println("Exception caught: " + e.getMessage());
+            }
+        }
+    }
+}
+
+
 
 
 
