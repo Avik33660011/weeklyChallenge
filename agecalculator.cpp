@@ -426,6 +426,72 @@ public class RandomAccessFileExample {
     }
 }
 
+public class TestException {
+
+    public static void main(String[] args) {
+        TestException test = new TestException();
+        
+        // Test NumberFormatException
+        test.testNumberFormatException();
+
+        // Test ArrayIndexOutOfBoundsException
+        test.testArrayIndexOutOfBoundsException();
+
+        // Test ArithmeticException
+        test.testArithmeticException();
+
+        // Test NullPointerException
+        test.testNullPointerException();
+
+        // Test ClassNotFoundException
+        test.testClassNotFoundException();
+    }
+
+    public void testNumberFormatException() {
+        try {
+            String invalidNumber = "abc";
+            int number = Integer.parseInt(invalidNumber);  // This will throw NumberFormatException
+        } catch (NumberFormatException e) {
+            System.out.println("Caught NumberFormatException: " + e.getMessage());
+        }
+    }
+
+    public void testArrayIndexOutOfBoundsException() {
+        try {
+            int[] numbers = {1, 2, 3};
+            int invalidIndex = numbers[5];  // This will throw ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Caught ArrayIndexOutOfBoundsException: " + e.getMessage());
+        }
+    }
+
+    public void testArithmeticException() {
+        try {
+            int result = 10 / 0;  // This will throw ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Caught ArithmeticException: " + e.getMessage());
+        }
+    }
+
+    public void testNullPointerException() {
+        try {
+            String str = null;
+            int length = str.length();  // This will throw NullPointerException
+        } catch (NullPointerException e) {
+            System.out.println("Caught NullPointerException: " + e.getMessage());
+        }
+    }
+
+    public void testClassNotFoundException() {
+        try {
+            Class.forName("com.example.NonExistentClass");  // This will throw ClassNotFoundException
+        } catch (ClassNotFoundException e) {
+            System.out.println("Caught ClassNotFoundException: " + e.getMessage());
+        }
+    }
+}
+
+
 
 
 
