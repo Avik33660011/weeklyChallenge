@@ -598,6 +598,83 @@ public class Account {
 
 
 
+import java.util.Scanner;
+
+// Custom Exception for incorrect age
+class IncorrectAgeException extends Exception {
+    public IncorrectAgeException(String message) {
+        super(message);
+    }
+}
+
+// Custom Exception for incorrect nationality
+class IncorrectNationalityException extends Exception {
+    public IncorrectNationalityException(String message) {
+        super(message);
+    }
+}
+
+// Voter class to check voting eligibility
+public class Voter {
+    private String name;
+    private String nationality;
+    private int age;
+
+    // Constructor
+    public Voter(String name, String nationality, int age) {
+        this.name = name;
+        this.nationality = nationality;
+        this.age = age;
+    }
+
+    // Method to check eligibility for voting
+    public void check() throws IncorrectAgeException, IncorrectNationalityException {
+        if (!"Indian".equalsIgnoreCase(this.nationality)) {
+            throw new IncorrectNationalityException("Voter is not an Indian citizen.");
+        }
+
+        if (this.age < 18) {
+            throw new IncorrectAgeException("Voter is not old enough to vote.");
+        }
+
+        System.out.println("Voter is eligible to vote.");
+    }
+
+    // toString method to display voter information
+    @Override
+    public String toString() {
+        return "Voter [Name: " + name + ", Nationality: " + nationality + ", Age: " + age + "]";
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Accept user input for name, nationality, and age
+        System.out.print("Enter Name: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Enter Nationality: ");
+        String nationality = scanner.nextLine();
+
+        System.out.print("Enter Age: ");
+        int age = scanner.nextInt();
+
+        // Create a Voter object
+        Voter voter = new Voter(name, nationality, age);
+
+        try {
+            // Print voter information
+            System.out.println(voter);
+            // Check if the voter is eligible to vote
+            voter.check();
+        } catch (IncorrectAgeException | IncorrectNationalityException e) {
+            // Handle exceptions by printing the error message
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+
+        scanner.close();
+    }
+}
 
 
 
