@@ -520,6 +520,83 @@ public class CalcAverage {
     }
 }
 
+//
+import java.util.Scanner;
+
+// Custom Exception Class
+class InsufficientFundsException extends Exception {
+    public InsufficientFundsException(String message) {
+        super(message);
+    }
+}
+
+// Account Class
+public class Account {
+    private int accountNumber;
+    private String accountHolderName;
+    private double balance;
+
+    public Account(int accountNumber, String accountHolderName, double balance) {
+        this.accountNumber = accountNumber;
+        this.accountHolderName = accountHolderName;
+        this.balance = balance;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void deposit(int amt) {
+        if (amt > 0) {
+            balance += amt;
+            System.out.println("Deposited: " + amt);
+        } else {
+            System.out.println("Deposit amount must be positive.");
+        }
+    }
+
+    public void withdraw(int amt) throws InsufficientFundsException {
+        if (amt > balance) {
+            throw new InsufficientFundsException("Insufficient funds for withdrawal.");
+        } else if (amt <= 0) {
+            System.out.println("Withdrawal amount must be positive.");
+        } else {
+            balance -= amt;
+            System.out.println("Withdrawn: " + amt);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter account number: ");
+        int accountNumber = scanner.nextInt();
+
+        scanner.nextLine();  // Consume newline
+
+        System.out.print("Enter account holder name: ");
+        String accountHolderName = scanner.nextLine();
+
+        System.out.print("Enter initial balance: ");
+        double initialBalance = scanner.nextDouble();
+
+        // Create Account object
+        Account account = new Account(accountNumber, accountHolderName, initialBalance);
+
+        System.out.print("Enter amount to withdraw: ");
+        int amtToWithdraw = scanner.nextInt();
+
+        try {
+            account.withdraw(amtToWithdraw);
+            System.out.println("New balance: " + account.getBalance());
+        } catch (InsufficientFundsException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+
+        scanner.close();
+    }
+}
+
+
 
 
 
