@@ -491,6 +491,36 @@ public class TestException {
     }
 }
 
+public class CalcAverage {
+
+    public static void main(String[] args) {
+        CalcAverage calc = new CalcAverage();
+
+        try {
+            // Test with a valid natural number
+            System.out.println("Average of first 5 natural numbers: " + calc.avgFirstN(5));
+
+            // Test with an invalid input (negative number)
+            System.out.println("Average of first -3 natural numbers: " + calc.avgFirstN(-3));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+    }
+
+    public double avgFirstN(int N) {
+        if (N <= 0) {
+            throw new IllegalArgumentException("N must be a natural number (greater than 0).");
+        }
+
+        // Calculate the sum of the first N natural numbers
+        double sum = N * (N + 1) / 2.0;
+        
+        // Calculate the average
+        return sum / N;
+    }
+}
+
+
 
 
 
