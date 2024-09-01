@@ -162,3 +162,37 @@ public class CollectionAPITest {
         System.out.println("After removing 'Banana' (remove), collection: " + collection);
     }
 }
+
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class ColorListExample {
+
+    public static void main(String[] args) {
+        // Create a new ArrayList to hold color names
+        List<String> colorList = new ArrayList<>();
+
+        // Add some colors to the ArrayList
+        colorList.add("Red");
+        colorList.add("Blue");
+        colorList.add("Green");
+        colorList.add("Yellow");
+        colorList.add("Purple");
+
+        // Print out the collection using Iterator
+        System.out.println("Printing elements using Iterator:");
+        Iterator<String> iterator = colorList.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+        // Print out the collection using foreach loop
+        System.out.println("\nPrinting elements using foreach loop:");
+        for (String color : colorList) {
+            System.out.println(color);
+        }
+    }
+}
+
