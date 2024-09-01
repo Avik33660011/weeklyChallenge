@@ -109,3 +109,56 @@ public class TestBoxing {
         System.out.println("The number is: " + num);
     }
 }
+
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+public class CollectionAPITest {
+
+    public static void main(String[] args) {
+        // Testing List API
+        System.out.println("Testing List API:");
+        List<String> list = new ArrayList<>();
+        testCollection(list);
+
+        // Testing Set API
+        System.out.println("\nTesting Set API:");
+        Set<String> set = new HashSet<>();
+        testCollection(set);
+    }
+
+    private static void testCollection(java.util.Collection<String> collection) {
+        // add() method
+        collection.add("Apple");
+        collection.add("Banana");
+        collection.add("Cherry");
+
+        // get() method for List only
+        if (collection instanceof List) {
+            List<String> list = (List<String>) collection;
+            System.out.println("Element at index 1 (get): " + list.get(1));
+        }
+
+        // size() method
+        System.out.println("Size of the collection (size): " + collection.size());
+
+        // isEmpty() method
+        System.out.println("Is the collection empty? (isEmpty): " + collection.isEmpty());
+
+        // iterator() method
+        System.out.print("Elements in the collection (iterator): ");
+        Iterator<String> iterator = collection.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
+
+        // remove() method
+        collection.remove("Banana");
+        System.out.println("After removing 'Banana' (remove), collection: " + collection);
+    }
+}
