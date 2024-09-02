@@ -436,3 +436,48 @@ public class Main {
         reverseThread.start();
     }
 }
+class Fibonacci extends Thread {
+    @Override
+    public void run() {
+        int n1 = 0, n2 = 1;
+        System.out.print("Fibonacci series: ");
+        for (int i = 1; i <= 10; i++) {
+            System.out.print(n1 + " ");
+            int n3 = n1 + n2;
+            n1 = n2;
+            n2 = n3;
+        }
+        System.out.println(); // Move to the next line after printing the series
+    }
+}
+
+class Reverse extends Thread {
+    @Override
+    public void run() {
+        System.out.print("Reverse order: ");
+        for (int i = 10; i >= 1; i--) {
+            System.out.print(i + " ");
+        }
+        System.out.println(); // Move to the next line after printing the numbers
+    }
+}
+
+public class ThreadExample {
+    public static void main(String[] args) {
+        // Create instances of the Fibonacci and Reverse classes
+        Fibonacci fibonacciThread = new Fibonacci();
+        Reverse reverseThread = new Reverse();
+
+        // Start both threads
+        fibonacciThread.start();
+        reverseThread.start();
+
+        // Wait for both threads to finish
+        try {
+            fibonacciThread.join();
+            reverseThread.join();
+        } catch (InterruptedException e) {
+            System.out.println("Main thread interrupted.");
+        }
+    }
+}
