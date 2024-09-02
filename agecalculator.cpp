@@ -196,3 +196,48 @@ public class ColorListExample {
     }
 }
 
+
+
+class MyThread extends Thread {
+
+    public MyThread(String name) {
+        super(name);  // Call the Thread constructor to set the name of the thread
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Thread " + getName() + " is running.");
+        try {
+            // Sleep for 1 second to simulate some work
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            System.out.println("Thread " + getName() + " was interrupted.");
+        }
+        System.out.println("Thread " + getName() + " is finished.");
+    }
+}
+
+public class ThreadMethodsExample {
+    public static void main(String[] args) {
+        // Create a thread with a custom name
+        MyThread thread1 = new MyThread("MyThread-1");
+        
+        System.out.println("Thread name: " + thread1.getName());
+        System.out.println("Thread priority: " + thread1.getPriority());
+        System.out.println("Is thread alive? " + thread1.isAlive());
+
+        // Start the thread
+        thread1.start();
+
+        System.out.println("Is thread alive after start? " + thread1.isAlive());
+
+        try {
+            // Wait for thread1 to finish
+            thread1.join();
+        } catch (InterruptedException e) {
+            System.out.println("Main thread was interrupted.");
+        }
+
+        System.out.println("Is thread alive after join? " + thread1.isAlive());
+    }
+}
