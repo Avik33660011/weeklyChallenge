@@ -481,3 +481,56 @@ public class ThreadExample {
         }
     }
 }
+
+// Thread class to generate and display the first 10 terms of the Fibonacci series
+class Fibonacci extends Thread {
+    @Override
+    public void run() {
+        int n1 = 0, n2 = 1, n3;
+        System.out.print("Fibonacci Series: ");
+        System.out.print(n1 + " " + n2); // Printing first two numbers
+
+        for (int i = 2; i < 10; i++) { // Loop starts from 2 as the first two numbers are already printed
+            n3 = n1 + n2;
+            System.out.print(" " + n3);
+            n1 = n2;
+            n2 = n3;
+        }
+        System.out.println(); // Move to the next line after printing the series
+    }
+}
+
+// Thread class to display numbers from 10 to 1 in reverse order
+class Reverse extends Thread {
+    @Override
+    public void run() {
+        System.out.print("Reverse Order: ");
+        for (int i = 10; i > 0; i--) {
+            System.out.print(i + " ");
+        }
+        System.out.println(); // Move to the next line after printing the series
+    }
+}
+
+public class MultiThreadSeries {
+    public static void main(String[] args) {
+        // Create instances of Fibonacci and Reverse thread classes
+        Fibonacci fibonacciThread = new Fibonacci();
+        Reverse reverseThread = new Reverse();
+
+        // Start both threads
+        fibonacciThread.start();
+        reverseThread.start();
+
+        // Wait for both threads to complete execution
+        try {
+            fibonacciThread.join();
+            reverseThread.join();
+        } catch (InterruptedException e) {
+            System.out.println("Main thread interrupted.");
+        }
+
+        System.out.println("Both threads have finished execution.");
+    }
+}
+
