@@ -401,3 +401,38 @@ public class MultiThreadDemo {
     }
 }
 
+class Fibonacci extends Thread {
+    @Override
+    public void run() {
+        int n1 = 0, n2 = 1;
+        System.out.println(n1); // First term of the Fibonacci series
+        System.out.println(n2); // Second term of the Fibonacci series
+        for (int i = 3; i <= 10; i++) {
+            int n3 = n1 + n2;
+            System.out.println(n3); // Next term in the Fibonacci series
+            n1 = n2;
+            n2 = n3;
+        }
+    }
+}
+
+class Reverse extends Thread {
+    @Override
+    public void run() {
+        for (int i = 10; i >= 1; i--) {
+            System.out.println(i); // Print numbers in reverse order
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of Fibonacci and Reverse threads
+        Fibonacci fibonacciThread = new Fibonacci();
+        Reverse reverseThread = new Reverse();
+
+        // Start both threads
+        fibonacciThread.start();
+        reverseThread.start();
+    }
+}
