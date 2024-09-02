@@ -300,3 +300,51 @@ public class MultipleThreadsExample {
         System.out.println("\nAll threads have finished execution.");
     }
 }
+
+
+class MessagePrinter implements Runnable {
+    private String message;
+
+    public MessagePrinter(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            System.out.println(message);
+            try {
+                // Sleep for 400 milliseconds
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+                System.out.println("Thread " + Thread.currentThread().getName() + " was interrupted.");
+                break;  // Exit the loop if interrupted
+            }
+        }
+    }
+}
+
+public class ContinuousMessagePrinter {
+    public static void main(String[] args) {
+        // Create two Runnable instances with different messages
+        MessagePrinter printer1 = new MessagePrinter("Message from Thread1");
+        MessagePrinter printer2 = new MessagePrinter("Message from Thread2");
+
+        // Create two threads and pass the Runnable instances to them
+        Thread thread1 = new Thread(printer1, "Thread1");
+        Thread thread2 = new Thread(printer2, "Thread2");
+
+        // Start the threads
+        thread1.start();
+        thread2.start();
+
+        // Main thread will keep running until the user presses Ctrl+C to stop the program
+        try {
+            // Join threads to keep the main thread alive and waiting
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            System.out.println("Main thread was interrupted.");
+        }
+    }
+}
