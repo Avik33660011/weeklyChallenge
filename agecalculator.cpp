@@ -241,3 +241,62 @@ public class ThreadMethodsExample {
         System.out.println("Is thread alive after join? " + thread1.isAlive());
     }
 }
+
+
+
+class MyRunnable implements Runnable {
+    @Override
+    public void run() {
+        // Get the current thread that is running this Runnable
+        Thread currentThread = Thread.currentThread();
+        System.out.println("Running thread: " + currentThread.getName());
+
+        // Simulate some work with sleep
+        try {
+            Thread.sleep(1000);  // Sleep for 1 second
+        } catch (InterruptedException e) {
+            System.out.println(currentThread.getName() + " was interrupted.");
+        }
+
+        System.out.println("Thread " + currentThread.getName() + " is finished.");
+    }
+}
+
+public class MultipleThreadsExample {
+    public static void main(String[] args) {
+        // Create instances of the Runnable implementation
+        MyRunnable runnable1 = new MyRunnable();
+        MyRunnable runnable2 = new MyRunnable();
+        MyRunnable runnable3 = new MyRunnable();
+
+        // Create threads and assign the runnable instances
+        Thread thread1 = new Thread(runnable1, "Thread-1");
+        Thread thread2 = new Thread(runnable2, "Thread-2");
+        Thread thread3 = new Thread(runnable3, "Thread-3");
+
+        // Start the threads
+        thread1.start();
+        thread2.start();
+        thread3.start();
+
+        // Print information about all currently active threads
+        Thread[] threads = new Thread[Thread.activeCount()];
+        Thread.enumerate(threads); // Fill the array with all active threads
+
+        System.out.println("\nCurrently active threads:");
+        for (Thread t : threads) {
+            System.out.println("Thread name: " + t.getName() + ", is alive: " + t.isAlive());
+        }
+
+        // Wait for all threads to finish
+        try {
+            thread1.join();
+            thread2.join();
+            thread3.join();
+        } catch (InterruptedException e) {
+            System.out.println("Main thread was interrupted.");
+        }
+
+        System.out.println("\nAll threads have finished execution.");
+    }
+}
