@@ -534,3 +534,78 @@ public class MultiThreadSeries {
     }
 }
 
+import java.util.Hashtable;
+import java.util.Scanner;
+
+class Product {
+    private String productId;
+    private String productName;
+
+    public Product(String productId, String productName) {
+        this.productId = productId;
+        this.productName = productName;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    @Override
+    public String toString() {
+        return "Product ID: " + productId + ", Product Name: " + productName;
+    }
+}
+
+public class ProductManager {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Hashtable<String, Product> products = new Hashtable<>();
+
+        // Predefined products
+        products.put("P001", new Product("P001", "Maruti800"));
+        products.put("P002", new Product("P002", "MarutiZen"));
+        products.put("P003", new Product("P003", "Maruti Esteem"));
+
+        // Input for remaining products
+        for (int i = 0; i < 7; i++) {
+            System.out.println("Enter Product ID:");
+            String productId = scanner.nextLine();
+            System.out.println("Enter Product Name:");
+            String productName = scanner.nextLine();
+            products.put(productId, new Product(productId, productName));
+        }
+
+        // Search for a product
+        System.out.println("Enter Product ID to search:");
+        String searchId = scanner.nextLine();
+        if (products.containsKey(searchId)) {
+            System.out.println("Product found: " + products.get(searchId));
+        } else {
+            System.out.println("Product not found.");
+        }
+
+        // Remove a product
+        System.out.println("Enter Product ID to remove:");
+        String removeId = scanner.nextLine();
+        if (products.containsKey(removeId)) {
+            products.remove(removeId);
+            System.out.println("Product removed.");
+        } else {
+            System.out.println("Product not found. Nothing to remove.");
+        }
+
+        // Display remaining products
+        System.out.println("Remaining products in the hashtable:");
+        for (Product product : products.values()) {
+            System.out.println(product);
+        }
+
+        scanner.close();
+    }
+}
+
+
