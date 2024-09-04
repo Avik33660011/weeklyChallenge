@@ -609,3 +609,59 @@ public class ProductManager {
 }
 
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class StudentCRUD {
+
+    // Database URL, Username, and Password
+    static final String DB_URL = "jdbc:mysql://localhost:3306/your_database_name"; // Replace with your DB name
+    static final String USER = "your_username"; // Replace with your DB username
+    static final String PASS = "your_password"; // Replace with your DB password
+
+    public static void main(String[] args) {
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+             Statement stmt = conn.createStatement()) {
+
+            // Create - Insert a new student record
+            String insertSQL = "INSERT INTO Student (rollno, name, marks, address) VALUES (1, 'John Doe', 85, '123 Main St')";
+            stmt.executeUpdate(insertSQL);
+            System.out.println("Insert successful");
+
+            // Read - Select all students
+            String selectSQL = "SELECT * FROM Student";
+            ResultSet rs = stmt.executeQuery(selectSQL);
+
+            while (rs.next()) {
+                // Retrieve by column name
+                int rollno = rs.getInt("rollno");
+                String name = rs.getString("name");
+                int marks = rs.getInt("marks");
+                String address = rs.getString("address");
+
+                // Display values
+                System.out.print("Roll No: " + rollno);
+                System.out.print(", Name: " + name);
+                System.out.print(", Marks: " + marks);
+                System.out.println(", Address: " + address);
+            }
+
+            // Update - Update student's marks
+            String updateSQL = "UPDATE Student SET marks = 90 WHERE rollno = 1";
+            stmt.executeUpdate(updateSQL);
+            System.out.println("Update successful");
+
+            // Delete - Delete a student record
+            String deleteSQL = "DELETE FROM Student WHERE rollno = 1";
+            stmt.executeUpdate(deleteSQL);
+            System.out.println("Delete successful");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
