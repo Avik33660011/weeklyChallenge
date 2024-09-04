@@ -664,4 +664,12 @@ public class StudentCRUD {
     }
 }
 
+CREATE TABLE Student (
+    rollno INT PRIMARY KEY,
+    name VARCHAR(50),
+    marks FLOAT,
+    address VARCHAR(100)
+);
+
+
 
