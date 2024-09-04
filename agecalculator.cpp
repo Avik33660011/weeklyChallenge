@@ -672,4 +672,17 @@ CREATE TABLE Student (
 );
 
 
+CREATE DATABASE BookDB;
+
+USE BookDB;
+
+CREATE TABLE Book (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    author VARCHAR(100),
+    price DECIMAL(10, 2),
+    category VARCHAR(50)
+);
+
+
 
