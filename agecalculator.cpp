@@ -684,5 +684,92 @@ CREATE TABLE Book (
     category VARCHAR(50)
 );
 
+import java.sql.*;
+
+public class BookCRUD {
+
+    private static final String URL = "jdbc:mysql://localhost:3306/BookDB";
+    private static final String USER = "root";
+    private static final String PASSWORD = "yourpassword";
+
+    public static void main(String[] args) {
+        try {
+            Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            
+            // Create
+            createBook(connection, "Effective Java", "Joshua Bloch", 45.50, "Programming");
+            
+            // Read
+            readBooks(connection);
+            
+            // Update
+            updateBook(connection, 1, "Effective Java, 3rd Edition", "Joshua Bloch", 50.00, "Programming");
+            
+            // Read after Update
+            readBooks(connection);
+            
+            // Delete
+            deleteBook(connection, 1);
+            
+            // Read after Delete
+            readBooks(connection);
+            
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void createBook(Connection connection, String name, String author, double price, String category) throws SQLException {
+        String insertSQL = "INSERT INTO Book (name, author, price, category) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(insertSQL)) {
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, author);
+            preparedStatement.setDouble(3, price);
+            preparedStatement.setString(4, category);
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Book added successfully. Rows affected: " + rowsAffected);
+        }
+    }
+
+    public static void readBooks(Connection connection) throws SQLException {
+        String selectSQL = "SELECT * FROM Book";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(selectSQL)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                System.out.println("ID: " + resultSet.getInt("id"));
+                System.out.println("Name: " + resultSet.getString("name"));
+                System.out.println("Author: " + resultSet.getString("author"));
+                System.out.println("Price: " + resultSet.getDouble("price"));
+                System.out.println("Category: " + resultSet.getString("category"));
+                System.out.println();
+            }
+        }
+    }
+
+    public static void updateBook(Connection connection, int id, String name, String author, double price, String category) throws SQLException {
+        String updateSQL = "UPDATE Book SET name = ?, author = ?, price = ?, category = ? WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(updateSQL)) {
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, author);
+            preparedStatement.setDouble(3, price);
+            preparedStatement.setString(4, category);
+            preparedStatement.setInt(5, id);
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Book updated successfully. Rows affected: " + rowsAffected);
+        }
+    }
+
+    public static void deleteBook(Connection connection, int id) throws SQLException {
+        String deleteSQL = "DELETE FROM Book WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL)) {
+            preparedStatement.setInt(1, id);
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Book deleted successfully. Rows affected: " + rowsAffected);
+        }
+    }
+}
+
+
 
 
