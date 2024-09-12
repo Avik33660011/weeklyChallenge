@@ -771,5 +771,57 @@ public class BookCRUD {
 }
 
 
+package com.infy.api;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+@RestController
+@RequestMapping("/infycourier")
+@Validated
+public class CourierBookingAPI {
+
+    @Autowired
+    private BookingService bookingService;
+
+    @Autowired
+    private Environment environment;
+
+    // POST Method to book a courier
+    @PostMapping("/courier")
+    public ResponseEntity<String> bookCourier(@Valid @RequestBody BookingDTO bookingDTO) {
+        // Invoke the service to book the courier
+        Integer bookingId = bookingService.bookCourier(bookingDTO);
+        
+        // Get success message from the properties file
+        String successMessage = environment.getProperty("API.BOOKING.SUCCESS");
+        
+        // Return response with booking ID and CREATED status
+        return new ResponseEntity<>(successMessage + " " + bookingId, HttpStatus.CREATED);
+    }
+
+    // GET Method to get courier details
+    @GetMapping("/courier/{bookingId}")
+    public ResponseEntity<BookingDTO> getCourierDetails(
+            @PathVariable("bookingId") 
+            @Size(max = 5, message = "{BookingDTO.bookingId.size}") Integer bookingId) {
+
+        // Fetch booking details from the service
+        BookingDTO bookingDTO = bookingService.getCourierDetails(bookingId);
+
+        // Return booking details in the response
+        return new ResponseEntity<>(bookingDTO, HttpStatus.OK);
+    }
+}
+
+
 
 
