@@ -823,5 +823,38 @@ public class CourierBookingAPI {
 }
 
 
+package com.infy.dto;
+
+import javax.validation.constraints.*;
+import java.util.Date;
+
+public class BookingDTO {
+
+    @NotNull(message = "{BookingDTO.weight.mandatory}")
+    @Min(value = 30, message = "{BookingDTO.weight.min}")
+    private Integer weight;
+
+    @NotNull(message = "{BookingDTO.priority.mandatory}")
+    @Pattern(regexp = "LOW|MEDIUM|HIGH", message = "{BookingDTO.priority.invalid}")
+    private String priority;
+
+    @Pattern(regexp = "", message = "{BookingDTO.status.invalid}")
+    private String status; // Should not be set by the user
+
+    @NotNull(message = "{BookingDTO.source.mandatory}")
+    @Pattern(regexp = "^[A-Za-z][A-Za-z ]*$", message = "{BookingDTO.source.invalid}")
+    private String source;
+
+    @NotNull(message = "{BookingDTO.destination.mandatory}")
+    @Pattern(regexp = "^[A-Za-z][A-Za-z ]*$", message = "{BookingDTO.destination.invalid}")
+    private String destination;
+
+    @NotNull(message = "{BookingDTO.bookingDate.mandatory}")
+    private Date bookingDate;
+
+    // Getters and Setters
+}
+
+
 
 
